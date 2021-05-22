@@ -45,15 +45,6 @@ responses:
   utter_ask_howcanhelp:
   - text: how can I help you?
   utter_ask_location:
-    - buttons:
-    - payload: Bangalore
-      title: Bangalore
-    - payload: Mumbai
-      title: Mumbai
-    - payload: Chennai
-      title: Chennai
-    - payload: Hyderabad
-      title: Hyderabad
   - text: In what location?
   - text: location please.
   - text: where do you live?
@@ -70,7 +61,7 @@ responses:
   - text: I wish i can understand
   - text: apology, I am too naive
   - text: I wish I could help you more.
-    utter_ask_price:
+  utter_ask_price:
   - buttons:
     - payload: low
       title: Lesser than Rs. 300
@@ -104,9 +95,6 @@ responses:
   - text: please enter your email
   - text: give me your email.
   - text: type your email
-  session_config:
-  carry_over_slots_to_new_session: false
-  session_expiration_time: 0
 actions:
 - action_search_restaurants
 - action_send_email

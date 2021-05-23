@@ -30,6 +30,11 @@ slots:
     type: text
   results_found:
     type: bool
+  emailbody:
+    type: text
+  check_resp:
+    type: bool
+    
 responses:
   utter_ask_cuisine:
   - buttons:
@@ -73,6 +78,9 @@ responses:
   utter_email_prompt:
   - text: do you want me to email you the results
   - text: do you want to send top  10 into your email
+  utter_we_dont_operate:
+  - text: Sorry, we do not operate in that location yet!
+  - text: Sorry, we dont serve in that location, can you please select another location ?
   utter_goodbye:
   - text: goodbye :(
   - text: Bye-bye
@@ -96,6 +104,7 @@ responses:
   - text: give me your email.
   - text: type your email
 actions:
+- action_check_location
 - action_search_restaurants
 - action_send_email
 - utter_ask_cuisine
@@ -104,6 +113,7 @@ actions:
 - utter_ask_price
 - utter_default
 - utter_email_prompt
+- utter_we_dont_operate
 - utter_goodbye
 - utter_greet
 - utter_request_email

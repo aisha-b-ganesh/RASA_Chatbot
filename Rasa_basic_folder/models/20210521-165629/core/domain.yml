@@ -1,0 +1,189 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- affirm:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- greet:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_sad:
+    use_entities: true
+- dissmiss:
+    use_entities: true
+- restaurant_search:
+    use_entities: true
+- telling_location:
+    use_entities: true
+- telling_cuisine:
+    use_entities: true
+- telling_location_cuisine:
+    use_entities: true
+- telling_category:
+    use_entities: true
+- telling_numpeople:
+    use_entities: true
+- telling_datetime:
+    use_entities: true
+- telling_phoneno:
+    use_entities: true
+entities:
+- cuisine
+- location
+- price
+- people
+- category
+- phone_no
+- number
+- time
+slots:
+  cuisine:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  num_people:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  phone_no:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  time:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  location_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  category:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  latitude:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  longitude:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Italian
+      title: Italian
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: what kind of cuisine would you like?
+  utter_greet:
+  - text: Hey ! How are you
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_assist:
+  - text: Great ! I can help you to find restaurants based your preferred location and cuisine.
+  utter_ask_location_cuisine:
+  - text: Please share your location and cuisine you would like to have.
+  utter_ask_location:
+  - text: Can you please help me with your location?
+  utter_affirm_info:
+  - text: Thanks for sharing the valuable information, let me check what I can find for you.
+  utter_affirm_location:
+  - text: Thanks for sharing your location.
+  utter_goodbye:
+  - text: Bye. Have a great time.
+  - text: Bye Bye. See you soon.
+  utter_itsok:
+  - text: It's completely fine ,I will try to get all types of restaurants for you. Choose the one you like :)
+  utter_enter_cuisine_again:
+  - text: Sorry we couldn't find any {cuisine} cuisine in {location}. Would you like to check some other cuisine?
+  utter_nosuch_cuisine_all_restaurants:
+  - text: We dint find any such cuisine that you are looking for. We will help you by providing all the available restaurants.
+  utter_location_denied:
+  - text: I am sorry I can't help you without location. You can find out the location and share with me else visit https://www.zomato.com/
+  utter_tryAfter_sometime:
+  - text: I am really sorry I can't help without the location. Please visit https://www.zomato.com/
+  - text: Sorry to disappoint you mate because I can't help you without location. Please visit https://www.zomato.com/
+  utter_affirm_cuisine:
+  - text: Ahh, Thanks for sharing the cuisine. You have got a good taste :D
+  - text: Thanks mate, Even I like {cuisine}.
+  utter_thanks:
+  - text: I hope you got what you were looking for,if not try me once more.
+  utter_ask_category:
+  - text: Would you like to try any specific category like 'Delivery', 'Dine-out', 'Nightlife', 'Takeaway', 'Cafes', 'Pubs & Bars', 'Pocket Friendly Delivery', 'Clubs & Lounges'
+  utter_affirm_category:
+  - text: Thanks for sharing the category,let me find some good restaurants for you.
+  utter_ask_for_booking:
+  - text: Would you like to do the table booking ?
+  utter_ask_num_people:
+  - text: kindly let me know for how many people you need the table..
+  utter_ask_time:
+  - text: please share the date and time at which you can arrive.
+  utter_ask_phone_no:
+  - text: kindly share your contact number on which you are reachable..
+  utter_slots_values:
+  - text: |
+      I am going to book the restaurant using the following information:
+       - num_people: {num_people}
+       - phone_no: {phone_no}
+       - time: {time}
+  utter_submit:
+  - text: Thanks for all the booking information
+actions:
+- utter_greet
+- utter_did_that_help
+- utter_goodbye
+- utter_affirm_info
+- utter_affirm_location
+- utter_assist
+- utter_ask_location
+- utter_ask_cuisine
+- utter_ask_location_cuisine
+- action_search_restaurants
+- action_show_restaurants
+- action_set_location
+- action_restaurants_nocuisine_nocat
+- action_restaurants_nocuisine_withCategory
+- utter_itsok
+- utter_enter_cuisine_again
+- utter_nosuch_cuisine_all_restaurants
+- utter_location_denied
+- utter_tryAfter_sometime
+- utter_affirm_cuisine
+- utter_thanks
+- utter_ask_category
+- utter_affirm_category
+- utter_ask_for_booking
+- utter_ask_num_people
+- utter_ask_phone_no
+- utter_slots_values
+- utter_ask_time
+- utter_submit
+- tableBooking_form
+forms:
+  tableBooking_form: {}
+e2e_actions: []

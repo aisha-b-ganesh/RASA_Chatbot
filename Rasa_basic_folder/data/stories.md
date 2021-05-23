@@ -33,6 +33,8 @@
     - utter_ask_location
 * restaurant_search{"location": "delhi"}
     - slot{"location": "delhi"}
+	- action_check_location
+	- slot{"check_resp": true}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
@@ -46,6 +48,8 @@
     - utter_greet
 * restaurant_search{"location": "delhi"}
     - slot{"location": "delhi"}
+	- action_check_location
+	- slot{"check_resp": true}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
@@ -61,6 +65,8 @@
     - utter_ask_location
 * restaurant_search{"location": "delhi"}
     - slot{"location": "delhi"}
+	- action_check_location
+	- slot{"check_resp": true}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "North Indian"}
     - slot{"cuisine": "North Indian"}
@@ -74,6 +80,8 @@
     - utter_ask_location
 * restaurant_search{"location": "italy"}
     - slot{"location": "italy"}
+	- action_check_location
+	- slot{"check_resp": true}
 	- utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
@@ -101,6 +109,8 @@
     - utter_greet
 * restaurant_search{"location": "mumbai"}
     - slot{"location": "mumbai"}
+	- action_check_location
+	- slot{"check_resp": true}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
@@ -115,6 +125,8 @@
     - utter_ask_location
 * restaurant_search{"location": "mumbai"}
     - slot{"location": "mumbai"}
+	- action_check_location
+	- slot{"check_resp": true}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "Italian"}
     - slot{"cuisine": "Italian"}
@@ -161,6 +173,7 @@
 ## interactive_story_16
 * restaurant_search{"location": "bengaluru"}
     - slot{"location": "bengaluru"}
+	- action_check_location
     - utter_ask_cuisine
 * location{"cuisine": "american"}
     - slot{"cuisine": "american"}
@@ -169,7 +182,10 @@
     - slot{"price": "high"}
     - action_search_restaurants
     - slot{"location": "bengaluru"}
+	- slot{"emailbody": "Showing you top rated restaurants:\nYauatcha in Raheja Towers, Bandra Kurla Complex, Mumbai has been rated 4.7\n And the average price for two people is: 2800\nPa Pa Ya in Level 3, Palladium Mall, Senapati Bapat Marg, Lower Parel, Mumbai has been rated 4.6\n And the average price for two people is: 2000\nPa Pa Ya in G-2, Ground Floor, Third, North Avenue, Maker Maxity, Bandra Kurla Complex, Mumbai has been rated 4.6\n And the average price for two people is: 2000\nHakkasan in 206, Krystal, Waterfield Road, Linking Road, Bandra West has been rated 4.5\n And the average price for two people is: 2600\nMamagoto in 133, Ground Floor, Gazebo House, Hill Road, Bandra West, Mumbai, Maharashtra has been rated 4.5\n And the average price for two people is: 1500\nPa Pa Ya in Hotel Diplomat, Whitehouse Building, 24 - 26, B.K Boman Behram Marg, Apollo Bunder, Colaba, Mumbai has been rated 4.5\n And the average price for two people is: 2000\nJia The Oriental Kitchen in 2, Dhanraj Mahal, C. S. Marg, Colaba, Mumbai has been rated 4.5\n And the average price for two people is: 2500\nShaollin Temple in Krishna Avtar Building, Plot F/3, Palm Beach Road, Sector 14, CBD-Belapur, Navi Mumbai has been rated 4.4\n And the average price for two people is: 1000\nChina Bistro in Ground Floor, Infinity Shopping Complex, Vasant Vihar, Thane West has been rated 4.4\n And the average price for two people is: 1500\nThe Fatty Bao in Shop 1, Ground Floor, Sentinel Building, Hiranandani Business Park, Powai, Mumbai has been rated 4.3\n And the average price for two people is: 1800\n"}
     - utter_request_email
+	- slot{"email": "vedulaaishwarya@gmail.com"}
+	- action_send_email
 * dissmiss
     - utter_goodbye
     - action_restart
@@ -187,6 +203,7 @@
     - slot{"got_all": "yes"}
 * affirm
     - utter_request_email
+	- action_send_email
 * email{"email": "siddakka_upgrad@gmail.com"}
     - slot{"email": "siddakka_upgrad@gmail.com"}
     - action_send_email
@@ -211,6 +228,7 @@
 	
 ## interactive_story_19
 * restaurant_search{"cuisine": "chinese", "location": "bengaluru"}
+	- action_check_location
     - slot{"cuisine": "chinese"}
     - slot{"location": "bengaluru"}
     - utter_ask_price
@@ -768,5 +786,49 @@
     - slot{"email": "aishwarya_upgrad@gmail.com"}
     - action_send_email
     - reset_slots
+    - utter_goodbye
+    - action_restart
+	
+## interactive_story_57
+* greet
+    - utter_greet
+* restaurant_search
+    - utter_ask_location
+* restaurant_search{"location": "Yanam"}
+    - slot{"location": "Yanam"}
+	- action_check_location
+	- slot{"check_resp": false}
+    - utter_we_dont_operate
+    - utter_goodbye
+    - export
+
+## interactive_story_58
+* greet
+    - utter_greet
+* restaurant_search{"location": "Yanam"}
+    - slot{"location": "Yanam"}
+	- action_check_location
+	- slot{"check_resp": false}
+	- utter_we_dont_operate
+    - utter_goodbye
+    - export
+	
+## interactive_story_59
+* restaurant_search{"location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+	- action_check_location
+    - utter_ask_cuisine
+* location{"cuisine": "american"}
+    - slot{"cuisine": "american"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
+    - action_search_restaurants
+    - slot{"location": "bengaluru"}
+	- slot{"emailbody": "Showing you top rated restaurants:\nYauatcha in Raheja Towers, Bandra Kurla Complex, Mumbai has been rated 4.7\n And the average price for two people is: 2800\nPa Pa Ya in Level 3, Palladium Mall, Senapati Bapat Marg, Lower Parel, Mumbai has been rated 4.6\n And the average price for two people is: 2000\nPa Pa Ya in G-2, Ground Floor, Third, North Avenue, Maker Maxity, Bandra Kurla Complex, Mumbai has been rated 4.6\n And the average price for two people is: 2000\nHakkasan in 206, Krystal, Waterfield Road, Linking Road, Bandra West has been rated 4.5\n And the average price for two people is: 2600\nMamagoto in 133, Ground Floor, Gazebo House, Hill Road, Bandra West, Mumbai, Maharashtra has been rated 4.5\n And the average price for two people is: 1500\nPa Pa Ya in Hotel Diplomat, Whitehouse Building, 24 - 26, B.K Boman Behram Marg, Apollo Bunder, Colaba, Mumbai has been rated 4.5\n And the average price for two people is: 2000\nJia The Oriental Kitchen in 2, Dhanraj Mahal, C. S. Marg, Colaba, Mumbai has been rated 4.5\n And the average price for two people is: 2500\nShaollin Temple in Krishna Avtar Building, Plot F/3, Palm Beach Road, Sector 14, CBD-Belapur, Navi Mumbai has been rated 4.4\n And the average price for two people is: 1000\nChina Bistro in Ground Floor, Infinity Shopping Complex, Vasant Vihar, Thane West has been rated 4.4\n And the average price for two people is: 1500\nThe Fatty Bao in Shop 1, Ground Floor, Sentinel Building, Hiranandani Business Park, Powai, Mumbai has been rated 4.3\n And the average price for two people is: 1800\n"}
+    - utter_request_email
+	- slot{"email": "vedulaaishwarya@gmail.com"}
+	- action_send_email
+* dissmiss
     - utter_goodbye
     - action_restart
